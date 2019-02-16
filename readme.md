@@ -4,4 +4,6 @@
 ## Laravel e angular
 
 Execute os comandos abaixo para start da aplicação
-- Composer install
+- composer install
+- npm install
+- php artisan serve
