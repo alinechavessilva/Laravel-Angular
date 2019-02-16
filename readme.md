@@ -5,5 +5,7 @@
 
 Execute os comandos abaixo para start da aplicação
 - composer install
+- php artisan migrate
 - npm install
+- npm run dev
 - php artisan serve

@@ -42,7 +42,7 @@
             </div>
         </div>
 
-        {{--modal--}}
+        {{--modal create--}}
 
         <div class="modal fade" tabindex="-1" role="dialog" id="add_new_task">
             <div class="modal-dialog" role="document">
@@ -73,6 +73,44 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary" ng-click="addTask()">Submit</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+
+        {{--modal update--}}
+
+
+        <div class="modal fade" tabindex="-1" role="dialog" id="edit_task">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Update Task</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="alert alert-danger" ng-if="errors.length > 0">
+                            <ul>
+                                <li ng-repeat="error in errors">@{{ error }}</li>
+                            </ul>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" class="form-control" ng-model="edit_task.name">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea name="description" rows="5" class="form-control"
+                                      ng-model="edit_task.description"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" ng-click="updateTask()">Submit</button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->

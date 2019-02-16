@@ -102,4 +102,38 @@ app.controller('TaskController', ['$scope', '$http', function ($scope, $http) {
         $scope.errors = [];
     };
 
+    $scope.edit_task = {};
+    // initialize update action
+    $scope.initEdit = function (index) {
+        $scope.errors = [];
+        $scope.edit_task = $scope.tasks[index];
+        $("#edit_task").modal('show');
+    };
+
+    // update the given task
+    $scope.updateTask = function () {
+        $http.patch('/task/' + $scope.edit_task.id, {
+            name: $scope.edit_task.name,
+            description: $scope.edit_task.description
+        }).then(function success(e) {
+            $scope.errors = [];
+            $("#edit_task").modal('hide');
+        }, function error(error) {
+            $scope.recordErrors(error);
+        });
+    };
+
+    // delete the given task
+    $scope.deleteTask = function (index) {
+
+        var conf = confirm("Do you really want to delete this task?");
+
+        if (conf === true) {
+            $http.delete('/task/' + $scope.tasks[index].id)
+                .then(function success(e) {
+                    $scope.tasks.splice(index, 1);
+                });
+        }
+    };
+
 }]);
